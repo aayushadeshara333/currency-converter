@@ -26,8 +26,8 @@ const Table = () => {
     const [selected, setSelected] = useState("USDINR");
     return (
         <div>
-            {(isNull || hasError) && <div className="home">Unable to fetch data</div>}
             {isPending && <div className="home">Loading</div>}
+            {(isNull || hasError) && <div className="home">Unable to fetch data</div>}
             {!isPending && !isNull && !hasError && <div className="table_content">
                 <h1 style={{ color: "rgba(255, 255, 255, 0.8)" }}>Currency Table</h1>
                 <table>
