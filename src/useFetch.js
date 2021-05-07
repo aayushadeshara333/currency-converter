@@ -33,6 +33,7 @@ const useFetch = (url) => {
                     }
 
                     else {
+                        console.clear();
                         console.log(err.message);
                         setIsPending(false);
                         setError(err.message);
