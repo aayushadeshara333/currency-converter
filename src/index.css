@@ -41,11 +41,12 @@ code {
 }
 
 table {
-  width: 40%;
+  width: 50%;
   /* border: 1px solid black; */
   border-collapse: collapse;
   border-style: none;
   box-shadow: 20px 20px 60px rgba(0, 0, 0, 0.5);
+  font-size: 20px;
   /* border: 0.5px solid rgba(255, 255, 255, 0.5); */
   /* border-right-width: 1px; */
   /* border-bottom-width: 1px; */
@@ -281,5 +282,10 @@ option {
 
   .from_input {
     margin-bottom: 5%;
+  }
+
+  table {
+    width: 50%;
+    font-size: 15px;
   }
 }
