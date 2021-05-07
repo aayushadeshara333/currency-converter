@@ -258,8 +258,8 @@ option {
   }
 
   td{
-    padding-left: 15%;
-    padding-right: 15%;
+    /* padding-left: 15%; */
+    /* padding-right: 15%; */
   }
 
   .from_main {
@@ -285,7 +285,7 @@ option {
   }
 
   table {
-    width: 50%;
+    width: 90%;
     font-size: 15px;
   }
 }

@@ -94,7 +94,7 @@ const Home = (props) => {
                         Show Answer
                 </div>
                     <div className="answer">
-                        {ready && answer.toFixed(5)}
+                        {ready && answer.toFixed(7)}
                     </div>
                     <div className="answer_sub">
                         {ready && <div>1 {from} is <b>{one}</b> {to}</div>}

@@ -38,7 +38,7 @@ const Table = () => {
                             </select>
                         </th>
                     </tr>
-                    {arr.map((e) => { return <tr><td>{e.slice(3, 6)}</td><td>{(data.quotes[e] / data.quotes[selected]).toFixed(5)}</td></tr> })}
+                    {arr.map((e) => { return <tr><td>{e.slice(3, 6)}</td><td>{(data.quotes[e] / data.quotes[selected]).toFixed(7)}</td></tr> })}
                 </table>
             </div>}
         </div>
