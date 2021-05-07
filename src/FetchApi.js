@@ -6,25 +6,28 @@ import { useState } from 'react';
 const FetchApi = () => {
     const API_KEY = process.env.REACT_APP_API_KEY;
     const URL = process.env.REACT_APP_URL;
-    let flag = false;
-    const { data, isPending, error } = useFetch(`${URL}/`);
+    let isNull = false;
+    let hasError = false;
+    const { data, isPending, error } = useFetch(`${URL}/live?access_key=${API_KEY}&format=1`);
 
     if(data === null){
-        flag = true;
-        document.getElementsByTagName("title").innerHTML = "Hello";
+        isNull = true;
+    }
+    else if(data.success === false){
+        hasError = true;
     }
 
     let arr = []
-    if (!isPending && flag === false) {
+    if (!isPending && isNull === false && hasError === false) {
         for (let e in data["quotes"]) {
             arr.push(e);
         }
     }
     return (
         <div>
-            {flag && <div className="home">Unable to fetch data</div>}
             {isPending && <div className="home">Loading</div>}
-            {!isPending && flag === false && <Home arr={arr} data={data["quotes"]} error={error}/>}
+            {(isNull || hasError) && <div className="home">Unable to fetch data</div>}
+            {!hasError && !isNull && !isPending && <Home arr={arr} data={data["quotes"]} error={error}/>}
         </div>
     );
 }

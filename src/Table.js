@@ -6,14 +6,18 @@ const Table = () => {
     const API_KEY = process.env.REACT_APP_API_KEY;
     const URL = process.env.REACT_APP_URL;
     const { data, isPending, error } = useFetch(`${URL}/live?access_key=${API_KEY}&format=1`);
-    let flag = false;
-    let arr = []
+    let isNull = false;
+    let hasError = false;
 
-    if (data === null || data.error.code === 101) {
-        flag = true;
+    if (data === null) {
+        isNull = true;
+    }
+    else if(data.success === false){
+        hasError = true;
     }
 
-    if (!isPending) {
+    let arr = []
+    if (!isPending && isNull === false && hasError === false) {
         for (let e in data["quotes"]) {
             arr.push(e);
         }
@@ -22,9 +26,9 @@ const Table = () => {
     const [selected, setSelected] = useState("USDINR");
     return (
         <div>
-            {flag && <div className="home">Unable to fetch data</div>}
+            {(isNull || hasError) && <div className="home">Unable to fetch data</div>}
             {isPending && <div className="home">Loading</div>}
-            {!isPending && flag === false && <div className="table_content">
+            {!isPending && !isNull && !hasError && <div className="table_content">
                 <h1 style={{ color: "rgba(255, 255, 255, 0.8)" }}>Currency Table</h1>
                 <table>
                     <tr>
